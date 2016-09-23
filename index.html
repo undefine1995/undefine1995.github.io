@@ -134,7 +134,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/23/SpiderZ/">SpiderZ</a>
+      <a class="article-title" href="/2016/09/23/SpiderZ/">SpiderZ爬虫框架</a>
     </h1>
   
 
@@ -142,7 +142,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="思路解释"><a href="#思路解释" class="headerlink" title="思路解释"></a>思路解释</h2><p>思路就大概是,主文件（我demo中用的main.py）    启动多个子进程，每个进程定时访问一次redis，若redis中有数据，则连续访问直到将redis中数据取空。</p>
+        <p>基于python与Redis的多进程分布式爬虫框架</p>
+<h2 id="思路解释"><a href="#思路解释" class="headerlink" title="思路解释"></a>思路解释</h2><p>思路就大概是,主文件（我demo中用的main.py）    启动多个子进程，每个进程定时访问一次redis，若redis中有数据，则连续访问直到将redis中数据取空。</p>
 <ul>
 <li>一个进程负责从redis中读取目标url，发送请求，克服一系列有的没的反爬虫机制，得到网页html代码，塞入redis中。</li>
 <li>一个进程负责从redis中读取html，解析后将结果或者后续url塞入redis。</li>
