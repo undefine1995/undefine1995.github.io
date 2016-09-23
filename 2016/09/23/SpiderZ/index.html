@@ -6,13 +6,30 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <title>SpiderZ | 膜</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="##思路解释思路就大概是,主文件（我demo中用的main.py）    启动多个子进程，每个进程定时访问一次redis，若redis中有数据，则连续访问直到将redis中数据取空。
+
+一个进程负责从redis中读取目标url，发送请求，克服一系列有的没的反爬虫机制，得到网页html代码，塞入redis中。
+一个进程负责从redis中读取html，解析后将结果或者后续url塞入redis。
+一个进">
+<meta property="og:type" content="article">
 <meta property="og:title" content="SpiderZ">
 <meta property="og:url" content="https://undefine1995.github.io/2016/09/23/SpiderZ/index.html">
 <meta property="og:site_name" content="膜">
-<meta property="og:updated_time" content="2016-09-23T05:40:55.341Z">
+<meta property="og:description" content="##思路解释思路就大概是,主文件（我demo中用的main.py）    启动多个子进程，每个进程定时访问一次redis，若redis中有数据，则连续访问直到将redis中数据取空。
+
+一个进程负责从redis中读取目标url，发送请求，克服一系列有的没的反爬虫机制，得到网页html代码，塞入redis中。
+一个进程负责从redis中读取html，解析后将结果或者后续url塞入redis。
+一个进">
+<meta property="og:image" content="http://odxn3l8vs.bkt.clouddn.com/123.jpg">
+<meta property="og:updated_time" content="2016-09-23T06:08:46.983Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpiderZ">
+<meta name="twitter:description" content="##思路解释思路就大概是,主文件（我demo中用的main.py）    启动多个子进程，每个进程定时访问一次redis，若redis中有数据，则连续访问直到将redis中数据取空。
+
+一个进程负责从redis中读取目标url，发送请求，克服一系列有的没的反爬虫机制，得到网页html代码，塞入redis中。
+一个进程负责从redis中读取html，解析后将结果或者后续url塞入redis。
+一个进">
+<meta name="twitter:image" content="http://odxn3l8vs.bkt.clouddn.com/123.jpg">
   
     <link rel="alternative" href="/atom.xml" title="膜" type="application/atom+xml">
   
@@ -137,7 +154,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>##思路解释<br>思路就大概是,主文件（我demo中用的main.py）    启动多个子进程，每个进程定时访问一次redis，若redis中有数据，则连续访问直到将redis中数据取空。</p>
+<ul>
+<li>一个进程负责从redis中读取目标url，发送请求，克服一系列有的没的反爬虫机制，得到网页html代码，塞入redis中。</li>
+<li>一个进程负责从redis中读取html，解析后将结果或者后续url塞入redis。</li>
+<li>一个进程负责处理相关存储。</li>
+<li>因为python的GIL，采用的是多进程方式。每一个进程都可以开多个子进程提升速度。</li>
+<li>有出错日志，记录异常网页。</li>
+<li>需要起始url。</li>
+<li>细节问题用标志位处理。<br>###然后看下思路图，画的比较随意，看个顺序和数据流向<br><img src="http://odxn3l8vs.bkt.clouddn.com/123.jpg" alt=""></li>
+</ul>
+
       
     </div>
     <div class="article-info article-info-index">
@@ -148,7 +175,7 @@
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python-spider-github/">python-spider,github</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python-spider-github/">python-spider;github</a></li></ul>
 	</div>
 
       
@@ -297,7 +324,7 @@ MathJax.Hub.Queue(function() {
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/python-spider-github/" style="font-size: 10px;">python-spider,github</a>
+    				<a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/python-spider-github/" style="font-size: 10px;">python-spider;github</a>
     			</div>
     	</section>
     
